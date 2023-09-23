@@ -1,0 +1,35 @@
+﻿@page
+@model E_commerce_site.Pages.ManageUserModel
+@{
+}
+<body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <form method="post" asp-page-handler="Update" asp-route-id="@user.Id">
+                            <input asp-for="PasswordString" />
+                            <input type="submit" value="Update Password" class="btn btn-default" />
+                        </form>
+                    </td>
+                    <td><a class="btn btn-sn btn-danger order-button float-right" asp-page="/ManageUser" asp-route-id="@user.Id" asp-page-handler="Delete">Delete User</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+</body>

@@ -1,0 +1,24 @@
+﻿@page
+@model E_commerce_site.Pages.AddToDBModel
+@{
+}
+<body>
+    <section class="registeration">
+        <h1>Add To DB</h1>
+        <section class="registerationTable">
+            <section class="tablecontent">
+                <form id="registerForm" method="POST">
+                    <label for="Name"><p>Name:</p></label>
+                    <input asp-for="@Model.products.Name" type="text" name="Name"><br>
+                    <label for="Description"><p>Description:</p></label>
+                    <input asp-for="@Model.products.Description" type="text" name="Description"><br>
+                    <label for="Price"><p>Price:</p></label>
+                    <input asp-for="@Model.products.Price" type="text" name="Price"><br>
+                    <label for="ProductImage"><p>Product Image:</p></label>
+                    <input asp-for="@Model.products.ProductImage" type="text" name="ProductImage"><br>
+                    <input class="submitForm" type="submit" value="Submit">
+                </form>
+            </section>
+        </section>
+    </section>
+</body>

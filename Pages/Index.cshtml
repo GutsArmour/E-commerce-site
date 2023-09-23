@@ -1,0 +1,41 @@
+﻿@page "{Search?}"
+@model E_commerce_site.Pages.IndexModel
+@{
+    Layout = "_Layout";
+}
+@using Microsoft.AspNetCore.Identity;
+@using E_commerce_site.Models;
+@inject SignInManager<AppUser> SignInManager;
+
+<body id="BodyBG">
+    <section class="homeContent">
+        <h1>Homepage</h1>
+        <form>
+            <div class="input-group">
+                <input class="form-control" type="text" asp-for="Search" />
+                <input class="btn btn-primary" type="submit" value="Search"/>
+            </div>
+        </form>
+        @foreach (var product in Model.products)
+        {
+            <section class="Contents">
+                <section id="tableContent">
+                    <h1>@product.Name</h1>
+                    <p>@product.Description</p>
+                    <p>Price (with VAT Rate): @product.Price</p>
+                    <img class="mainImg" id="animateImage" src="@product.ProductImage" alt="acer quality build">
+                    @{ if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-sm btn-danger order-button float-right" asp-page="/EditProduct" asp-route-id="@product.ProductId">Update</a>
+                            <a asp-page="/Index" asp-route-id="@product.ProductId" asp-page-handler="Delete">Delete</a><br />
+                        }
+                    }
+                <form class="white" method="post" asp-route-id="@product.ProductId">
+                    <input type="text" value="1" asp-for="@product.Quantity" />
+                    <input asp-for="basket" type="submit" value="Add to Basket" />
+                </form>
+                </section>
+            </section>
+        }
+    </section>
+</body>

@@ -1,0 +1,29 @@
+﻿@page
+@model E_commerce_site.Pages.ManageRolesModel
+@{
+}
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Role ID</th>
+                <th>Role Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model.Roles)
+            {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <form method="post" asp-page-handler="Update" asp-route-id="@role.Id">
+                        <input asp-for="AdminString" />
+                        <input type="submit" value="Update Role" class="btn btn-default" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>

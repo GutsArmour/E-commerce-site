@@ -1,0 +1,28 @@
+﻿@page
+@model E_commerce_site.Pages.EditProductModel
+@{
+}
+<section class = "registeration">
+    <h1>Edit Product Details</h1>
+    <section class="registerationTable">
+        <section class="tablecontent">
+            <form method="post" asp-page="EditProduct">
+                <label asp-for="@Model.products.ProductId">                </label>
+                <input type="text" asp-for="@Model.products.ProductId" readonly /><br />
+               
+                <label asp-for="@Model.products.Name">                </label>
+                <input type="text" asp-for="@Model.products.Name" /><br />
+                
+                <label asp-for="@Model.products.Description">                </label>
+                <input type="text" asp-for="@Model.products.Description" /><br />
+                
+                <label asp-for="@Model.products.Price">              </label>
+                <input type="text" asp-for="@Model.products.Price" /><br />
+                
+                <input type="submit" value="Save" />
+            </form>
+        </section>
+    </section>
+</section>
+
+

@@ -1,0 +1,18 @@
+﻿@page
+@model E_commerce_site.Pages.acerModel
+@{
+    Layout = "_Layout";
+}
+
+<body>
+    <section class="productContent" id="tableContent">
+        <h1>@Model.Name</h1>
+        <img class="productImg" id="animateImage" src="@Model.ProductImage">
+        <section class="productTable">
+            <section class="tablecontent">
+                <p>@Model.Description</p>
+                <p>Price: @Model.Price</p>
+            </section>
+        </section>
+    </section>
+</body>

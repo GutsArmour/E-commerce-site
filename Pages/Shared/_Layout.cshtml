@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using E_commerce_site.Models;
+@inject SignInManager<AppUser> SignInManager;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="homeHeader">
+        <nav class="navbar" id="changeFonts">
+            <label class="menuIcon" for="menuIcon">&#9776;</label>
+            <input class="menuCheck" type="checkbox" id="menuIcon">
+            <section class="navLinks">
+                <ul>
+                    <li class="active" id="navActive"><a asp-page="/index">Home</a></li>
+                    <li><a asp-page="/acer">Acer Swift</a></li>
+                    <li><a asp-page="/mac">MacBook Air</a></li>
+                    <li><a asp-page="/surface">MS Surface Pro 7</a></li>
+                    <li><a asp-page="/Basket">Basket</a></li>
+                            <li><a asp-page="/AddToDB">Add To DB</a></li>
+                            <li><a asp-page="/ManageUser">Users</a></li>
+                            <li><a asp-page="/ManageRoles">Roles</a></li>
+                    <li><a asp-page="/AboutUs">About Us</a></li>
+                </ul>
+            </section>
+            <section class="navPresentation">
+                <form>
+                    <label class="fontSizeDropDown" for="fontSize">Select font size:</label>
+                    <select id="fontSize" name="fontSize" onchange="increaseFont(value)">
+                        <option id="normalFontButton" value="normalFontSize">Normal</option>
+                        <option id="largeFontButton" value="largeFontSize">Large</option>
+                        <option id="smallFontButton" value="smallFontSize">Small</option>
+                    </select>
+                </form>
+                <partial name="_LoginPartial" />
+            </section>
+        </nav>
+    </header>
+    <section class="darkMode">
+        <img id="darkModeButton" class="darkModeImg" src="assets/darkmode.png" alt="Toggle dark/light mode">
+    </section>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">&copy; Izhan Ahmed <br> Email: n0917295@my.ntu.ac.uk</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

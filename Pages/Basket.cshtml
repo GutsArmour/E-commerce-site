@@ -1,0 +1,35 @@
+﻿@page
+@model E_commerce_site.Pages.BasketModel
+@{
+}
+@using Microsoft.AspNetCore.Identity;
+@using E_commerce_site.Models;
+@inject SignInManager<AppUser> SignInManager;
+<body id="BodyBG">
+    <section class="homeContent">
+        <h1>Basket</h1>
+        @foreach (var item in Model.basket)
+        {
+        <section class="productContent" id="tableContent">
+            <section class="productTable">
+                <section class="Contents">
+                    <h1>@item.Name</h1>
+                    <img class="productImg" id="animateImage" src="@item.ProductImage">
+                    <p>Price: @item.Price</p>
+                    <p>Quantity:</p><input type="text" value="1" asp-for="@item.Quantity" /><br />
+                    <a asp-page="/Basket" asp-route-id="@item.BasketId" asp-page-handler="Delete">Remove from Basket</a><br />
+                </section>
+            </section>
+        </section>
+        }
+        @if (HttpContext.User.Identity.IsAuthenticated)
+        {
+            <button>Checkout</button>
+        }
+        else
+        {
+            <h2>Chechout is only available for registered users</h2>
+
+        }
+    </section>
+</body>
